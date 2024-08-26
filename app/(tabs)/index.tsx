@@ -22,7 +22,7 @@ export default function HomeScreen() {
 
   const [text, onChangeText] = React.useState('');
   const [number, onChangeNumber] = React.useState('');
-  const [counter, updateCounter] = React.useState(0);
+  const [counter, updateCounter] = React.useState(5);
   const [questions, fetchQuestions] = React.useState([]);
 
   const customData = require('../../multiple-choice.json');
@@ -34,17 +34,25 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{marginTop: 15, color: 'black', fontSize: 30, textAlign: 'center'}}>Question {counter + 1}</Text>
+      <Text style={{marginTop: 15, marginBottom: 15, color: 'white', fontSize: 25, textAlign: 'center'}}>Question {counter + 1}</Text>
+      <Text style={{color: 'white', marginBottom: 15, }}>{jsonQuestions[counter]}</Text>
       
-      {/* <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
-        >
-      </TextInput> */}
-      
-
       <View style={{display: 'flex', alignItems: 'center'}}>
+      
+        {/* ------------------------------------------------------ */}
+
+        <Pressable style={({pressed}) => [
+          {
+            backgroundColor: pressed ? 'blue': 'pink',
+            borderRadius: 8,
+            padding: 6,
+            marginBottom: 10
+          }
+        ]} onPress={() => Alert.alert('people are shit')}>
+          <Text>{jsonAnswers[counter][0]}</Text>
+        </Pressable>
+
+        {/* ------------------------------------------------------ */}
         
         <Pressable style={({pressed}) => [
           {
@@ -54,20 +62,50 @@ export default function HomeScreen() {
             marginBottom: 10
           }
         ]} onPress={() => Alert.alert('people are shit')}>
-          <Text>Answer you fucker</Text>
+          <Text>{jsonAnswers[counter][1]}</Text>
+        </Pressable>
+        
+        {/* ------------------------------------------------------ */}
+
+        <Pressable style={({pressed}) => [
+          {
+            backgroundColor: pressed ? 'blue': 'pink',
+            borderRadius: 8,
+            padding: 6,
+            marginBottom: 10
+          }
+        ]} onPress={() => Alert.alert('people are shit')}>
+          <Text>{jsonAnswers[counter][2]}</Text>
         </Pressable>
 
-        <Pressable style={styles.button} onPress={() => Alert.alert('bitch')}>
-          <Text>Answer 2</Text>
+        {/* ------------------------------------------------------ */}
+
+        <Pressable style={({pressed}) => [
+          {
+            backgroundColor: pressed ? 'blue': 'pink',
+            borderRadius: 8,
+            padding: 6,
+            marginBottom: 10
+          }
+        ]} onPress={() => Alert.alert('people are shit')}>
+          <Text>{jsonAnswers[counter][3]}</Text>
         </Pressable>
-        
-        <Pressable style={styles.button} onPress={() => Alert.alert('bitch')}>
-          <Text>Answer 3</Text>
+
+        {/* ------------------------------------------------------ */}
+
+        <Pressable style={({pressed}) => [
+          {
+            backgroundColor: pressed ? 'blue': 'pink',
+            borderRadius: 8,
+            padding: 6,
+            marginBottom: 10
+          }
+        ]} onPress={() => Alert.alert('people are shit')}>
+          <Text>{jsonAnswers[counter][4]}</Text>
         </Pressable>
-        
-        <Pressable style={styles.button} onPress={() => Alert.alert('bitch')}>
-          <Text>Answer 4</Text>
-        </Pressable>
+
+        {/* ------------------------------------------------------ */}
+
       </View>
 
     </SafeAreaView>
