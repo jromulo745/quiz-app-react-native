@@ -22,7 +22,7 @@ export default function HomeScreen() {
 
   const [text, onChangeText] = React.useState('');
   const [number, onChangeNumber] = React.useState('');
-  const [counter, updateCounter] = React.useState(5);
+  const [counter, updateCounter] = React.useState(0);
   const [questions, fetchQuestions] = React.useState([]);
 
   const customData = require('../../multiple-choice.json');
@@ -39,6 +39,19 @@ export default function HomeScreen() {
       
       <View style={{display: 'flex', alignItems: 'center'}}>
       
+        {/* ------------------------------------------------------ */}
+
+        <Pressable style={({pressed}) => [
+          {
+            backgroundColor: pressed ? 'blue': 'grey',
+            borderRadius: 8,
+            padding: 6,
+            marginBottom: 10
+          }
+        ]} onPress={() => Alert.alert('people are shit')}>
+          <Text>Next Question</Text>
+        </Pressable>
+
         {/* ------------------------------------------------------ */}
 
         <Pressable style={({pressed}) => [
