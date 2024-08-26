@@ -17,18 +17,32 @@ import React from 'react';
 
 export default function HomeScreen() {
 
+  let jsonQuestions = [];
+  let jsonAnswers = [];
+
   const [text, onChangeText] = React.useState('');
   const [number, onChangeNumber] = React.useState('');
+  const [counter, updateCounter] = React.useState(0);
+  const [questions, fetchQuestions] = React.useState([]);
+
+  const customData = require('../../multiple-choice.json');
+
+  for (let item in customData) {
+    jsonQuestions.push(item);
+    jsonAnswers.push(customData[item]);
+  }
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{color: 'white', fontSize: 30, textAlign: 'center'}}>How are you</Text>
-      <TextInput
+      <Text style={{marginTop: 15, color: 'black', fontSize: 30, textAlign: 'center'}}>Question {counter + 1}</Text>
+      
+      {/* <TextInput
         style={styles.input}
         onChangeText={onChangeText}
         value={text}
         >
-      </TextInput>
+      </TextInput> */}
+      
 
       <View style={{display: 'flex', alignItems: 'center'}}>
         
