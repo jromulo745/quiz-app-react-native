@@ -112,6 +112,22 @@ export default function HomeScreen() {
     }
 
     setChoiceButtonDisabled(true);
+    setNextButtonDisabled(false);
+  }
+
+  // ------------------------------------------------------
+
+  function nextQuestion() {
+    updateCounter(counter + 1);
+    setChoiceButtonDisabled(false);
+    setNextButtonDisabled(true);
+
+    // reset button colors
+    setButton1Color('pink');
+    setButton2Color('pink');
+    setButton3Color('pink');
+    setButton4Color('pink');
+    setButton5Color('pink');
   }
 
   // ------------------------------------------------------
@@ -144,7 +160,7 @@ export default function HomeScreen() {
             padding: 6,
             marginBottom: 10
           }
-        ]} onPress={() => Alert.alert('You\'re ass')}>
+        ]} onPress={() => nextQuestion()}>
           <Text>Next Question</Text>
         </Pressable>
 
