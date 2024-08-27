@@ -29,16 +29,38 @@ export default function HomeScreen() {
   const [counter, updateCounter] = React.useState(0);
   const [questions, fetchQuestions] = React.useState([]);
 
+  const [button1Color, setButton1Color] = React.useState('pink');
+  const [button2Color, setButton2Color] = React.useState('pink');
+  const [button3Color, setButton3Color] = React.useState('pink');
+  const [button4Color, setButton4Color] = React.useState('pink');
+  const [button5Color, setButton5Color] = React.useState('pink');
+
+  // ------------------------------------------------------
+
   let correctAnswer = ""
+
+  // ------------------------------------------------------
 
   for (let item in customData) {
     jsonQuestions.push(item);
     jsonAnswers.push(customData[item]);
   }
 
-  function checkAnswer(entered: number): void {
-    Alert.alert(jsonAnswers[0]);
+  // ------------------------------------------------------
+  
+  for (let i = 0; i < 5; i++) {
+    if (jsonAnswers[counter][i][0] === "*") {
+      correctAnswer = jsonAnswers[counter][i][0];
+    }
   }
+
+  // ------------------------------------------------------
+
+  function checkAnswer(entered: String): void {
+    
+  }
+
+  // ------------------------------------------------------
 
   function formatSelection(selection: string): String {
     if (selection[0] === "*") {
@@ -50,7 +72,7 @@ export default function HomeScreen() {
     }
   }
 
-  
+  // ------------------------------------------------------
 
   return (
     <SafeAreaView style={styles.container}>
@@ -68,7 +90,7 @@ export default function HomeScreen() {
             padding: 6,
             marginBottom: 10
           }
-        ]} onPress={() => Alert.alert('Not yet bitch')}>
+        ]} onPress={() => Alert.alert('You gay')}>
           <Text>Next Question</Text>
         </Pressable>
 
@@ -76,12 +98,12 @@ export default function HomeScreen() {
         {/* choice 1 */}
         <Pressable style={({pressed}) => [
           {
-            backgroundColor: pressed ? 'blue': 'pink',
+            backgroundColor: pressed ? 'blue': button1Color,
             borderRadius: 8,
             padding: 6,
             marginBottom: 10
           }
-        ]} onPress={() => checkAnswer(2)}>
+        ]} onPress={() => checkAnswer(jsonAnswers[counter][0])}>
           <Text>{formatSelection(jsonAnswers[counter][0])}</Text>
         </Pressable>
 
@@ -89,12 +111,12 @@ export default function HomeScreen() {
         {/* choice 2 */}
         <Pressable style={({pressed}) => [
           {
-            backgroundColor: pressed ? 'blue': 'pink',
+            backgroundColor: pressed ? 'blue': button2Color,
             borderRadius: 8,
             padding: 6,
             marginBottom: 10
           }
-        ]} onPress={() => checkAnswer(3)}>
+        ]} onPress={() => checkAnswer(jsonAnswers[counter][1])}>
           <Text>{formatSelection(jsonAnswers[counter][1])}</Text>
         </Pressable>
         
@@ -102,12 +124,12 @@ export default function HomeScreen() {
         {/* choice 3 */}
         <Pressable style={({pressed}) => [
           {
-            backgroundColor: pressed ? 'blue': 'pink',
+            backgroundColor: pressed ? 'blue': button3Color,
             borderRadius: 8,
             padding: 6,
             marginBottom: 10
           }
-        ]} onPress={() => Alert.alert('people are shit')}>
+        ]} onPress={() => checkAnswer(jsonAnswers[counter][2])}>
           <Text>{formatSelection(jsonAnswers[counter][2])}</Text>
         </Pressable>
 
@@ -115,12 +137,12 @@ export default function HomeScreen() {
         {/* choice 4 */}
         <Pressable style={({pressed}) => [
           {
-            backgroundColor: pressed ? 'blue': 'pink',
+            backgroundColor: pressed ? 'blue': button4Color,
             borderRadius: 8,
             padding: 6,
             marginBottom: 10
           }
-        ]} onPress={() => Alert.alert('people are shit')}>
+        ]} onPress={() => checkAnswer(jsonAnswers[counter][3])}>
           <Text>{formatSelection(jsonAnswers[counter][3])}</Text>
         </Pressable>
 
@@ -128,12 +150,12 @@ export default function HomeScreen() {
         {/* choice 5 */}
         <Pressable style={({pressed}) => [
           {
-            backgroundColor: pressed ? 'blue': 'pink',
+            backgroundColor: pressed ? 'blue': button5Color,
             borderRadius: 8,
             padding: 6,
             marginBottom: 10
           }
-        ]} onPress={() => Alert.alert('people are shit')}>
+        ]} onPress={() => checkAnswer(jsonAnswers[counter][4])}>
           <Text>{formatSelection(jsonAnswers[counter][4])}</Text>
         </Pressable>
 
