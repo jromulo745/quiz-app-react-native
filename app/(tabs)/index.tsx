@@ -37,7 +37,8 @@ export default function HomeScreen() {
 
   // ------------------------------------------------------
 
-  let correctAnswer = ""
+  let correctAnswer = "";
+  let correct_index = 0;
 
   // ------------------------------------------------------
 
@@ -51,13 +52,61 @@ export default function HomeScreen() {
   for (let i = 0; i < 5; i++) {
     if (jsonAnswers[counter][i][0] === "*") {
       correctAnswer = jsonAnswers[counter][i][0];
+      correct_index = i;
+      break;
     }
   }
 
   // ------------------------------------------------------
 
-  function checkAnswer(entered: String): void {
+  function checkAnswer(entered: String, buttonNumber: number): void {
     
+    // get the other buttons ready to be greyed out
+    setButton1Color('grey');
+    setButton2Color('grey');
+    setButton3Color('grey');
+    setButton4Color('grey');
+    setButton5Color('grey');
+
+    // set the selected button to be red, if incorrectly selected
+    if (entered !== correctAnswer) {
+      switch (buttonNumber) {
+        case 1:
+          setButton1Color('red');
+          break;
+        case 2:
+          setButton2Color('red');
+          break;
+        case 3:
+          setButton3Color('red');
+          break;
+        case 4:
+          setButton4Color('red');
+          break;
+        case 5:
+          setButton5Color('red');
+          break;
+      }
+    }
+
+    // set the correct button to be green, regardless of whether it was pressed
+    switch (correct_index) {
+      case 0:
+        setButton1Color('green');
+        break;
+      case 1:
+        setButton2Color('green');
+        break;
+      case 2:
+        setButton3Color('green');
+        break;
+      case 3:
+        setButton4Color('green');
+        break;
+      case 4:
+        setButton5Color('green');
+        break;
+    }
   }
 
   // ------------------------------------------------------
@@ -90,7 +139,7 @@ export default function HomeScreen() {
             padding: 6,
             marginBottom: 10
           }
-        ]} onPress={() => Alert.alert('You gay')}>
+        ]} onPress={() => Alert.alert('You\'re ass')}>
           <Text>Next Question</Text>
         </Pressable>
 
@@ -103,7 +152,7 @@ export default function HomeScreen() {
             padding: 6,
             marginBottom: 10
           }
-        ]} onPress={() => checkAnswer(jsonAnswers[counter][0])}>
+        ]} onPress={() => checkAnswer(jsonAnswers[counter][0], 1)}>
           <Text>{formatSelection(jsonAnswers[counter][0])}</Text>
         </Pressable>
 
@@ -116,7 +165,7 @@ export default function HomeScreen() {
             padding: 6,
             marginBottom: 10
           }
-        ]} onPress={() => checkAnswer(jsonAnswers[counter][1])}>
+        ]} onPress={() => checkAnswer(jsonAnswers[counter][1], 2)}>
           <Text>{formatSelection(jsonAnswers[counter][1])}</Text>
         </Pressable>
         
@@ -129,7 +178,7 @@ export default function HomeScreen() {
             padding: 6,
             marginBottom: 10
           }
-        ]} onPress={() => checkAnswer(jsonAnswers[counter][2])}>
+        ]} onPress={() => checkAnswer(jsonAnswers[counter][2], 3)}>
           <Text>{formatSelection(jsonAnswers[counter][2])}</Text>
         </Pressable>
 
@@ -142,7 +191,7 @@ export default function HomeScreen() {
             padding: 6,
             marginBottom: 10
           }
-        ]} onPress={() => checkAnswer(jsonAnswers[counter][3])}>
+        ]} onPress={() => checkAnswer(jsonAnswers[counter][3], 4)}>
           <Text>{formatSelection(jsonAnswers[counter][3])}</Text>
         </Pressable>
 
@@ -155,7 +204,7 @@ export default function HomeScreen() {
             padding: 6,
             marginBottom: 10
           }
-        ]} onPress={() => checkAnswer(jsonAnswers[counter][4])}>
+        ]} onPress={() => checkAnswer(jsonAnswers[counter][4], 5)}>
           <Text>{formatSelection(jsonAnswers[counter][4])}</Text>
         </Pressable>
 
