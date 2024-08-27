@@ -24,16 +24,21 @@ export default function HomeScreen() {
 
   const customData = require('../../multiple-choice.json');
 
+  const unpressedButtonColor = 'pink';
+  const disabledButtonColor = 'grey';
+  const incorrectChoiceColor = 'red';
+  const correctChoiceColor = 'green';
+
   const [text, onChangeText] = React.useState('');
   const [number, onChangeNumber] = React.useState('');
   const [counter, updateCounter] = React.useState(0);
   const [questions, fetchQuestions] = React.useState([]);
 
-  const [button1Color, setButton1Color] = React.useState('pink');
-  const [button2Color, setButton2Color] = React.useState('pink');
-  const [button3Color, setButton3Color] = React.useState('pink');
-  const [button4Color, setButton4Color] = React.useState('pink');
-  const [button5Color, setButton5Color] = React.useState('pink');
+  const [button1Color, setButton1Color] = React.useState(unpressedButtonColor);
+  const [button2Color, setButton2Color] = React.useState(unpressedButtonColor);
+  const [button3Color, setButton3Color] = React.useState(unpressedButtonColor);
+  const [button4Color, setButton4Color] = React.useState(unpressedButtonColor);
+  const [button5Color, setButton5Color] = React.useState(unpressedButtonColor);
 
   const [choiceButtonDisabled, setChoiceButtonDisabled] = React.useState(false);
   const [nextButtonDisabled, setNextButtonDisabled] = React.useState(true);
@@ -65,29 +70,29 @@ export default function HomeScreen() {
   function checkAnswer(entered: String, buttonNumber: number): void {
     
     // get the other buttons ready to be greyed out
-    setButton1Color('grey');
-    setButton2Color('grey');
-    setButton3Color('grey');
-    setButton4Color('grey');
-    setButton5Color('grey');
+    setButton1Color(disabledButtonColor);
+    setButton2Color(disabledButtonColor);
+    setButton3Color(disabledButtonColor);
+    setButton4Color(disabledButtonColor);
+    setButton5Color(disabledButtonColor);
 
     // set the selected button to be red, if incorrectly selected
     if (entered !== correctAnswer) {
       switch (buttonNumber) {
         case 1:
-          setButton1Color('red');
+          setButton1Color(incorrectChoiceColor);
           break;
         case 2:
-          setButton2Color('red');
+          setButton2Color(incorrectChoiceColor);
           break;
         case 3:
-          setButton3Color('red');
+          setButton3Color(incorrectChoiceColor);
           break;
         case 4:
-          setButton4Color('red');
+          setButton4Color(incorrectChoiceColor);
           break;
         case 5:
-          setButton5Color('red');
+          setButton5Color(incorrectChoiceColor);
           break;
       }
     }
@@ -95,19 +100,19 @@ export default function HomeScreen() {
     // set the correct button to be green, regardless of whether it was pressed
     switch (correct_index) {
       case 0:
-        setButton1Color('green');
+        setButton1Color(correctChoiceColor);
         break;
       case 1:
-        setButton2Color('green');
+        setButton2Color(correctChoiceColor);
         break;
       case 2:
-        setButton3Color('green');
+        setButton3Color(correctChoiceColor);
         break;
       case 3:
-        setButton4Color('green');
+        setButton4Color(correctChoiceColor);
         break;
       case 4:
-        setButton5Color('green');
+        setButton5Color(correctChoiceColor);
         break;
     }
 
@@ -123,11 +128,11 @@ export default function HomeScreen() {
     setNextButtonDisabled(true);
 
     // reset button colors
-    setButton1Color('pink');
-    setButton2Color('pink');
-    setButton3Color('pink');
-    setButton4Color('pink');
-    setButton5Color('pink');
+    setButton1Color(unpressedButtonColor);
+    setButton2Color(unpressedButtonColor);
+    setButton3Color(unpressedButtonColor);
+    setButton4Color(unpressedButtonColor);
+    setButton5Color(unpressedButtonColor);
   }
 
   // ------------------------------------------------------
