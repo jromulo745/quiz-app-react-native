@@ -35,6 +35,9 @@ export default function HomeScreen() {
   const [button4Color, setButton4Color] = React.useState('pink');
   const [button5Color, setButton5Color] = React.useState('pink');
 
+  const [choiceButtonDisabled, setChoiceButtonDisabled] = React.useState(false);
+  const [nextButtonDisabled, setNextButtonDisabled] = React.useState(true);
+
   // ------------------------------------------------------
 
   let correctAnswer = "";
@@ -107,6 +110,8 @@ export default function HomeScreen() {
         setButton5Color('green');
         break;
     }
+
+    setChoiceButtonDisabled(true);
   }
 
   // ------------------------------------------------------
@@ -132,7 +137,7 @@ export default function HomeScreen() {
       
         {/* ------------------------------------------------------ */}
         {/* next button */}
-        <Pressable style={({pressed}) => [
+        <Pressable disabled={nextButtonDisabled} style={({pressed}) => [
           {
             backgroundColor: pressed ? 'blue': 'grey',
             borderRadius: 8,
@@ -145,20 +150,20 @@ export default function HomeScreen() {
 
         {/* ------------------------------------------------------ */}
         {/* choice 1 */}
-        <Pressable style={({pressed}) => [
+        <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
           {
             backgroundColor: pressed ? 'blue': button1Color,
             borderRadius: 8,
             padding: 6,
             marginBottom: 10
           }
-        ]} onPress={() => checkAnswer(jsonAnswers[counter][0], 1)}>
+        ]} onPress={() => checkAnswer(jsonAnswers[counter][0], 1) }>
           <Text>{formatSelection(jsonAnswers[counter][0])}</Text>
         </Pressable>
 
         {/* ------------------------------------------------------ */}
         {/* choice 2 */}
-        <Pressable style={({pressed}) => [
+        <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
           {
             backgroundColor: pressed ? 'blue': button2Color,
             borderRadius: 8,
@@ -171,7 +176,7 @@ export default function HomeScreen() {
         
         {/* ------------------------------------------------------ */}
         {/* choice 3 */}
-        <Pressable style={({pressed}) => [
+        <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
           {
             backgroundColor: pressed ? 'blue': button3Color,
             borderRadius: 8,
@@ -184,7 +189,7 @@ export default function HomeScreen() {
 
         {/* ------------------------------------------------------ */}
         {/* choice 4 */}
-        <Pressable style={({pressed}) => [
+        <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
           {
             backgroundColor: pressed ? 'blue': button4Color,
             borderRadius: 8,
@@ -197,7 +202,7 @@ export default function HomeScreen() {
 
         {/* ------------------------------------------------------ */}
         {/* choice 5 */}
-        <Pressable style={({pressed}) => [
+        <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
           {
             backgroundColor: pressed ? 'blue': button5Color,
             borderRadius: 8,
