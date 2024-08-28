@@ -158,10 +158,10 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{marginTop: 15, marginBottom: 15, color: 'white', fontSize: 25, textAlign: 'center'}}>Question {counter + 1}</Text>
-      <Text style={{color: 'white', marginBottom: 15, }}>{jsonQuestions[counter]}</Text>
+      <Text style={{marginTop: 15, marginBottom: 15, color: 'grey', fontSize: 25, textAlign: 'center'}}>Question {counter + 1}</Text>
+      <Text style={{color: 'grey', marginBottom: 15, fontSize: 19, alignSelf: 'center'}}>{jsonQuestions[counter]}</Text>
       
-      <View style={{display: 'flex', alignItems: 'center'}}>
+      <View style={{alignItems: 'center'}}>
       
         {/* ------------------------------------------------------ */}
         {/* next button */}
@@ -180,6 +180,8 @@ export default function HomeScreen() {
         {/* choice 1 */}
         <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
           {
+            alignItems: 'center',
+            width: 300,
             backgroundColor: pressed ? pressedButtonColor: button1Color,
             borderRadius: 8,
             padding: 6,
@@ -193,6 +195,8 @@ export default function HomeScreen() {
         {/* choice 2 */}
         <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
           {
+            alignItems: 'center',
+            width: 300,
             backgroundColor: pressed ? pressedButtonColor: button2Color,
             borderRadius: 8,
             padding: 6,
@@ -206,6 +210,8 @@ export default function HomeScreen() {
         {/* choice 3 */}
         <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
           {
+            alignItems: 'center',
+            width: 300,
             backgroundColor: pressed ? pressedButtonColor: button3Color,
             borderRadius: 8,
             padding: 6,
@@ -219,6 +225,8 @@ export default function HomeScreen() {
         {/* choice 4 */}
         <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
           {
+            alignItems: 'center',
+            width: 300,
             backgroundColor: pressed ? pressedButtonColor: button4Color,
             borderRadius: 8,
             padding: 6,
@@ -232,6 +240,8 @@ export default function HomeScreen() {
         {/* choice 5 */}
         <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
           {
+            alignItems: 'center',
+            width: 300,
             backgroundColor: pressed ? pressedButtonColor: button5Color,
             borderRadius: 8,
             padding: 6,
