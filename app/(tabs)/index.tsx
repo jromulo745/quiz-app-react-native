@@ -158,7 +158,7 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{marginTop: 15, marginBottom: 15, color: 'grey', fontSize: 25, textAlign: 'center'}}>Question {counter + 1}</Text>
+      <Text style={{marginTop: 50, marginBottom: 15, color: 'grey', fontSize: 25, textAlign: 'center'}}>Question {counter + 1}</Text>
       <Text style={{color: 'grey', marginBottom: 15, fontSize: 19, alignSelf: 'center'}}>{jsonQuestions[counter]}</Text>
       
       <View style={{alignItems: 'center'}}>
