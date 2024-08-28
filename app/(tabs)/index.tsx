@@ -1,3 +1,9 @@
+/*
+to-do:
+  - timed quiz
+  - quiz game modes: solo/another [anonymous player]/timed solo
+*/
+
 import { 
   Image, 
   StyleSheet, 
@@ -25,6 +31,7 @@ export default function HomeScreen() {
   const customData = require('../../multiple-choice.json');
 
   const unpressedButtonColor = 'pink';
+  const pressedButtonColor = 'white';
   const disabledButtonColor = 'grey';
   const incorrectChoiceColor = 'red';
   const correctChoiceColor = 'green';
@@ -160,7 +167,7 @@ export default function HomeScreen() {
         {/* next button */}
         <Pressable disabled={nextButtonDisabled} style={({pressed}) => [
           {
-            backgroundColor: pressed ? 'blue': 'grey',
+            backgroundColor: pressed ? pressedButtonColor: 'grey',
             borderRadius: 8,
             padding: 6,
             marginBottom: 10
@@ -173,10 +180,10 @@ export default function HomeScreen() {
         {/* choice 1 */}
         <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
           {
-            backgroundColor: pressed ? 'blue': button1Color,
+            backgroundColor: pressed ? pressedButtonColor: button1Color,
             borderRadius: 8,
             padding: 6,
-            marginBottom: 10
+            marginBottom: 10,
           }
         ]} onPress={() => checkAnswer(jsonAnswers[counter][0], 1) }>
           <Text>{formatSelection(jsonAnswers[counter][0])}</Text>
@@ -186,7 +193,7 @@ export default function HomeScreen() {
         {/* choice 2 */}
         <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
           {
-            backgroundColor: pressed ? 'blue': button2Color,
+            backgroundColor: pressed ? pressedButtonColor: button2Color,
             borderRadius: 8,
             padding: 6,
             marginBottom: 10
@@ -199,7 +206,7 @@ export default function HomeScreen() {
         {/* choice 3 */}
         <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
           {
-            backgroundColor: pressed ? 'blue': button3Color,
+            backgroundColor: pressed ? pressedButtonColor: button3Color,
             borderRadius: 8,
             padding: 6,
             marginBottom: 10
@@ -212,7 +219,7 @@ export default function HomeScreen() {
         {/* choice 4 */}
         <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
           {
-            backgroundColor: pressed ? 'blue': button4Color,
+            backgroundColor: pressed ? pressedButtonColor: button4Color,
             borderRadius: 8,
             padding: 6,
             marginBottom: 10
@@ -225,7 +232,7 @@ export default function HomeScreen() {
         {/* choice 5 */}
         <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
           {
-            backgroundColor: pressed ? 'blue': button5Color,
+            backgroundColor: pressed ? pressedButtonColor: button5Color,
             borderRadius: 8,
             padding: 6,
             marginBottom: 10
@@ -254,15 +261,4 @@ const styles = StyleSheet.create({
     color: 'white',
     borderColor: 'white',
   },
-  button: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 10,
-    paddingVertical: 12,
-    paddingHorizontal: 0.1,
-    borderRadius: 4,
-    elevation: 3,
-    backgroundColor: 'pink',
-    width: 100
-  }
 });
