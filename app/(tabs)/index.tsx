@@ -21,6 +21,9 @@ import {
 
 import React from 'react';
 
+import { LinearGradient } from 'expo-linear-gradient';
+import { ScrollView } from 'react-native-gesture-handler';
+
 // -------------------------------------------------------------------
 
 export default function HomeScreen() {
@@ -157,110 +160,117 @@ export default function HomeScreen() {
   // ------------------------------------------------------
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={{marginTop: 50, marginBottom: 15, color: 'grey', fontSize: 25, textAlign: 'center'}}>Question {counter + 1}</Text>
-      <Text style={{color: 'grey', marginBottom: 15, fontSize: 19, alignSelf: 'center'}}>{jsonQuestions[counter]}</Text>
+    <View>
       
-      <View style={{alignItems: 'center'}}>
-      
-        {/* ------------------------------------------------------ */}
-        {/* next button */}
-        <Pressable disabled={nextButtonDisabled} style={({pressed}) => [
-          {
-            backgroundColor: pressed ? pressedButtonColor: 'grey',
-            borderRadius: 8,
-            padding: 6,
-            marginBottom: 10
-          }
-        ]} onPress={() => nextQuestion()}>
-          <Text>Next Question</Text>
-        </Pressable>
+      <LinearGradient colors={['rgb(193,131,232)', 'transparent']} start={{x: 0.0, y: 0.0}} end={{x: 1, y: 1}}>
 
-        {/* ------------------------------------------------------ */}
-        {/* choice 1 */}
-        <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
-          {
-            alignItems: 'center',
-            width: 300,
-            backgroundColor: pressed ? pressedButtonColor: button1Color,
-            borderRadius: 8,
-            padding: 6,
-            marginBottom: 10,
-          }
-        ]} onPress={() => checkAnswer(jsonAnswers[counter][0], 1) }>
-          <Text>{formatSelection(jsonAnswers[counter][0])}</Text>
-        </Pressable>
-
-        {/* ------------------------------------------------------ */}
-        {/* choice 2 */}
-        <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
-          {
-            alignItems: 'center',
-            width: 300,
-            backgroundColor: pressed ? pressedButtonColor: button2Color,
-            borderRadius: 8,
-            padding: 6,
-            marginBottom: 10
-          }
-        ]} onPress={() => checkAnswer(jsonAnswers[counter][1], 2)}>
-          <Text>{formatSelection(jsonAnswers[counter][1])}</Text>
-        </Pressable>
+        <Text style={{paddingTop: 40, color: 'grey', marginTop: 50, marginBottom: 15, fontSize: 25, textAlign: 'center'}}>Question {counter + 1}<Text style={{fontSize: 15}}> / {jsonQuestions.length}</Text> </Text>
         
-        {/* ------------------------------------------------------ */}
-        {/* choice 3 */}
-        <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
-          {
-            alignItems: 'center',
-            width: 300,
-            backgroundColor: pressed ? pressedButtonColor: button3Color,
-            borderRadius: 8,
-            padding: 6,
-            marginBottom: 10
-          }
-        ]} onPress={() => checkAnswer(jsonAnswers[counter][2], 3)}>
-          <Text>{formatSelection(jsonAnswers[counter][2])}</Text>
-        </Pressable>
+        <View style={{alignItems: 'center', backgroundColor: 'white', paddingTop: 7, paddingBottom: 50, borderRadius: 20, marginHorizontal: 16, marginBottom: 500}}>
+        
+          {/* <LinearGradient style={{borderRadius: 20, marginTop:  0, marginBottom: 15,}} colors={['rgba(61, 171, 201, 1)', 'transparent']} end={{x: 0.1, y: 0.2}}> */}
+            <Text style={{backgroundColor: 'rgb(193, 131, 232)', overflow: 'hidden', borderRadius: 20, marginBottom: 15, marginLeft: 5, marginRight: 5, color: 'grey', fontSize: 19, alignSelf: 'center', padding: 35}}>{jsonQuestions[counter]}</Text>
+          {/* </LinearGradient> */}
 
-        {/* ------------------------------------------------------ */}
-        {/* choice 4 */}
-        <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
-          {
-            alignItems: 'center',
-            width: 300,
-            backgroundColor: pressed ? pressedButtonColor: button4Color,
-            borderRadius: 8,
-            padding: 6,
-            marginBottom: 10
-          }
-        ]} onPress={() => checkAnswer(jsonAnswers[counter][3], 4)}>
-          <Text>{formatSelection(jsonAnswers[counter][3])}</Text>
-        </Pressable>
+          {/* ------------------------------------------------------ */}
+          {/* next button */}
+          <Pressable disabled={nextButtonDisabled} style={({pressed}) => [
+            {
+              backgroundColor: pressed ? pressedButtonColor: 'grey',
+              borderRadius: 13,
+              padding: 12,
+              marginBottom: 10
+            }
+          ]} onPress={() => nextQuestion()}>
+            <Text>Next Question</Text>
+          </Pressable>
 
-        {/* ------------------------------------------------------ */}
-        {/* choice 5 */}
-        <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
-          {
-            alignItems: 'center',
-            width: 300,
-            backgroundColor: pressed ? pressedButtonColor: button5Color,
-            borderRadius: 8,
-            padding: 6,
-            marginBottom: 10
-          }
-        ]} onPress={() => checkAnswer(jsonAnswers[counter][4], 5)}>
-          <Text>{formatSelection(jsonAnswers[counter][4])}</Text>
-        </Pressable>
+          {/* ------------------------------------------------------ */}
+          {/* choice 1 */}
+          <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
+            {
+              alignItems: 'center',
+              width: 300,
+              backgroundColor: pressed ? pressedButtonColor: button1Color,
+              borderRadius: 13,
+              padding: 12,
+              marginBottom: 10,
+            }
+          ]} onPress={() => checkAnswer(jsonAnswers[counter][0], 1) }>
+            <Text>{formatSelection(jsonAnswers[counter][0])}</Text>
+          </Pressable>
 
-        {/* ------------------------------------------------------ */}
-      </View>
-    </SafeAreaView>
+          {/* ------------------------------------------------------ */}
+          {/* choice 2 */}
+          <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
+            {
+              alignItems: 'center',
+              width: 300,
+              backgroundColor: pressed ? pressedButtonColor: button2Color,
+              borderRadius: 13,
+              padding: 12,
+              marginBottom: 10
+            }
+          ]} onPress={() => checkAnswer(jsonAnswers[counter][1], 2)}>
+            <Text>{formatSelection(jsonAnswers[counter][1])}</Text>
+          </Pressable>
+          
+          {/* ------------------------------------------------------ */}
+          {/* choice 3 */}
+          <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
+            {
+              alignItems: 'center',
+              width: 300,
+              backgroundColor: pressed ? pressedButtonColor: button3Color,
+              borderRadius: 13,
+              padding: 12,
+              marginBottom: 10
+            }
+          ]} onPress={() => checkAnswer(jsonAnswers[counter][2], 3)}>
+            <Text>{formatSelection(jsonAnswers[counter][2])}</Text>
+          </Pressable>
+
+          {/* ------------------------------------------------------ */}
+          {/* choice 4 */}
+          <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
+            {
+              alignItems: 'center',
+              width: 300,
+              backgroundColor: pressed ? pressedButtonColor: button4Color,
+              borderRadius: 13,
+              padding: 12,
+              marginBottom: 10
+            }
+          ]} onPress={() => checkAnswer(jsonAnswers[counter][3], 4)}>
+            <Text>{formatSelection(jsonAnswers[counter][3])}</Text>
+          </Pressable>
+
+          {/* ------------------------------------------------------ */}
+          {/* choice 5 */}
+          <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
+            {
+              alignItems: 'center',
+              width: 300,
+              backgroundColor: pressed ? pressedButtonColor: button5Color,
+              borderRadius: 13,
+              padding: 12,
+              marginBottom: 10
+            }
+          ]} onPress={() => checkAnswer(jsonAnswers[counter][4], 5)}>
+            <Text>{formatSelection(jsonAnswers[counter][4])}</Text>
+          </Pressable>
+
+          {/* ------------------------------------------------------ */}
+        </View>
+      </LinearGradient>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: StatusBar.currentHeight,
+    // paddingTop: StatusBar.currentHeight,
     marginHorizontal: 16,
   },
   input: {
