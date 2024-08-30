@@ -162,7 +162,7 @@ export default function HomeScreen() {
   return (
     <View>
       
-      <LinearGradient colors={['rgb(193,131,232)', 'transparent']} start={{x: 0.0, y: 0.0}} end={{x: 1, y: 1}}>
+      <LinearGradient colors={['rgb(58,174,216)', 'transparent']} start={{x: 0.0, y: 0.0}} end={{x: 1, y: 1}}>
 
         <Text style={{paddingTop: 40, color: 'grey', marginTop: 50, marginBottom: 15, fontSize: 25, textAlign: 'center'}}>Question {counter + 1}<Text style={{fontSize: 15}}> / {jsonQuestions.length}</Text> </Text>
         
