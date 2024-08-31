@@ -22,11 +22,14 @@ import {
 import React from 'react';
 
 import { LinearGradient } from 'expo-linear-gradient';
-import { ScrollView } from 'react-native-gesture-handler';
+import { Dimensions } from 'react-native';
 
 // -------------------------------------------------------------------
 
 export default function HomeScreen() {
+
+  const deviceWidth = Dimensions.get('window').width;
+  const deviceheight = Dimensions.get('window').height;
 
   let jsonQuestions: string[] = [];
   let jsonAnswers: string[] = [];
@@ -160,17 +163,15 @@ export default function HomeScreen() {
   // ------------------------------------------------------
 
   return (
-    <View>
-      
+    <SafeAreaView style={styles.container}>
       <LinearGradient colors={['rgb(58,174,216)', 'transparent']} start={{x: 0.0, y: 0.0}} end={{x: 1, y: 1}}>
-
-        <Text style={{paddingTop: 40, color: 'grey', marginTop: 50, marginBottom: 15, fontSize: 25, textAlign: 'center'}}>Question {counter + 1}<Text style={{fontSize: 15}}> / {jsonQuestions.length}</Text> </Text>
+        <Text style={{color: 'grey', marginTop: (deviceheight * 0.05), marginBottom: (deviceWidth * 0.05), fontSize: 25, textAlign: 'center'}}>Question {counter + 1}<Text style={{fontSize: 15}}> / {jsonQuestions.length}</Text> </Text>
         
-        <View style={{alignItems: 'center', backgroundColor: 'white', paddingTop: 7, paddingBottom: 50, borderRadius: 20, marginHorizontal: 16, marginBottom: 500}}>
-        
-          {/* <LinearGradient style={{borderRadius: 20, marginTop:  0, marginBottom: 15,}} colors={['rgba(61, 171, 201, 1)', 'transparent']} end={{x: 0.1, y: 0.2}}> */}
-            <Text style={{backgroundColor: 'rgb(193, 131, 232)', overflow: 'hidden', borderRadius: 20, marginBottom: 15, marginLeft: 5, marginRight: 5, color: 'grey', fontSize: 19, alignSelf: 'center', padding: 35}}>{jsonQuestions[counter]}</Text>
-          {/* </LinearGradient> */}
+        {/* white background */}
+        <View style={{alignItems: 'center', backgroundColor: 'white', paddingTop: (deviceheight * 0.01), borderRadius: 20, marginHorizontal: 16}}>
+          <LinearGradient style={{borderRadius: 20, marginTop:  0, marginBottom: 15, marginLeft: (deviceWidth * 0.01), marginRight: (deviceWidth * 0.01)}} colors={['rgba(61, 171, 201, 1)', 'transparent']} end={{x: 0.0, y: 0.0}}>
+            <Text style={{overflow: 'hidden', borderRadius: 20, marginBottom: 15, marginLeft: (deviceWidth * 0.01), marginRight: (deviceWidth * 0.01), color: 'grey', fontSize: 19, alignSelf: 'center', padding: 20}}>{jsonQuestions[counter]}</Text>
+          </LinearGradient>
 
           {/* ------------------------------------------------------ */}
           {/* next button */}
@@ -263,14 +264,14 @@ export default function HomeScreen() {
           {/* ------------------------------------------------------ */}
         </View>
       </LinearGradient>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    // paddingTop: StatusBar.currentHeight,
+    // flex: 1,
+    paddingTop: StatusBar.currentHeight,
     marginHorizontal: 16,
   },
   input: {
