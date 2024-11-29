@@ -164,14 +164,14 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <LinearGradient colors={['rgb(58,174,216)', 'transparent']} start={{x: 0.0, y: 0.0}} end={{x: 1, y: 1}}>
+      {/* <LinearGradient colors={['rgb(58,174,216)', 'transparent']} start={{x: 0.0, y: 0.0}} end={{x: 1, y: 1}}> */}
         <Text style={{color: 'grey', marginTop: (deviceheight * 0.05), marginBottom: (deviceWidth * 0.05), fontSize: 25, textAlign: 'center'}}>Question {counter + 1}<Text style={{fontSize: 15}}> / {jsonQuestions.length}</Text> </Text>
         
         {/* white background */}
         <View style={{alignItems: 'center', backgroundColor: 'white', paddingTop: (deviceheight * 0.01), borderRadius: 20, marginHorizontal: 16}}>
-          <LinearGradient style={{borderRadius: 20, marginTop:  0, marginBottom: 15, marginLeft: (deviceWidth * 0.01), marginRight: (deviceWidth * 0.01)}} colors={['rgba(61, 171, 201, 1)', 'transparent']} end={{x: 0.0, y: 0.0}}>
+          {/* <LinearGradient style={{borderRadius: 20, marginTop:  0, marginBottom: 15, marginLeft: (deviceWidth * 0.01), marginRight: (deviceWidth * 0.01)}} colors={['rgba(61, 171, 201, 1)', 'transparent']} end={{x: 0.0, y: 0.0}}> */}
             <Text style={{overflow: 'hidden', borderRadius: 20, marginBottom: 15, marginLeft: (deviceWidth * 0.01), marginRight: (deviceWidth * 0.01), color: 'grey', fontSize: 19, alignSelf: 'center', padding: 20}}>{jsonQuestions[counter]}</Text>
-          </LinearGradient>
+          {/* </LinearGradient> */}
 
           {/* ------------------------------------------------------ */}
           {/* next button */}
@@ -263,7 +263,7 @@ export default function HomeScreen() {
 
           {/* ------------------------------------------------------ */}
         </View>
-      </LinearGradient>
+      {/* </LinearGradient> */}
     </SafeAreaView>
   );
 }
