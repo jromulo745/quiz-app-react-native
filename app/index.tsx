@@ -21,7 +21,7 @@ import {
 
 import React from 'react';
 
-import { LinearGradient } from 'expo-linear-gradient';
+// import { LinearGradient } from 'expo-linear-gradient';
 import { Dimensions } from 'react-native';
 
 // -------------------------------------------------------------------
