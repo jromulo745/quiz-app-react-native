@@ -181,6 +181,7 @@ export default function Index() {
             {
               borderWidth: 0,
               backgroundColor: pressed ? pressedButtonColor: 'grey',
+              display: 'none'
             }
           ]} onPress={() => nextQuestion()}>
             <Text>Next Question</Text>
