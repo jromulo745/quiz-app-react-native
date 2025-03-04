@@ -36,7 +36,7 @@ export default function Index() {
 
   const customData = require('../multiple-choice.json');
 
-  const unpressedButtonColor = 'pink';
+  const unpressedButtonColor = 'white';
   const pressedButtonColor = 'white';
   const disabledButtonColor = 'grey';
   const incorrectChoiceColor = 'red';
@@ -46,6 +46,7 @@ export default function Index() {
   const [number, onChangeNumber] = React.useState('');
   const [counter, updateCounter] = React.useState(0);
   const [questions, fetchQuestions] = React.useState([]);
+  
 
   const [button1Color, setButton1Color] = React.useState(unpressedButtonColor);
   const [button2Color, setButton2Color] = React.useState(unpressedButtonColor);
@@ -176,11 +177,10 @@ export default function Index() {
           {/* ------------------------------------------------------ */}
           {/* next button */}
           <Pressable disabled={nextButtonDisabled} style={({pressed}) => [
+            styles.button,
             {
+              borderWidth: 0,
               backgroundColor: pressed ? pressedButtonColor: 'grey',
-              borderRadius: 13,
-              padding: 12,
-              marginBottom: 10
             }
           ]} onPress={() => nextQuestion()}>
             <Text>Next Question</Text>
@@ -189,13 +189,9 @@ export default function Index() {
           {/* ------------------------------------------------------ */}
           {/* choice 1 */}
           <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
+            styles.button,
             {
-              alignItems: 'center',
-              width: 300,
               backgroundColor: pressed ? pressedButtonColor: button1Color,
-              borderRadius: 13,
-              padding: 12,
-              marginBottom: 10,
             }
           ]} onPress={() => checkAnswer(jsonAnswers[counter][0], 1) }>
             <Text>{formatSelection(jsonAnswers[counter][0])}</Text>
@@ -204,13 +200,9 @@ export default function Index() {
           {/* ------------------------------------------------------ */}
           {/* choice 2 */}
           <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
+            styles.button,
             {
-              alignItems: 'center',
-              width: 300,
               backgroundColor: pressed ? pressedButtonColor: button2Color,
-              borderRadius: 13,
-              padding: 12,
-              marginBottom: 10
             }
           ]} onPress={() => checkAnswer(jsonAnswers[counter][1], 2)}>
             <Text>{formatSelection(jsonAnswers[counter][1])}</Text>
@@ -219,13 +211,9 @@ export default function Index() {
           {/* ------------------------------------------------------ */}
           {/* choice 3 */}
           <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
+            styles.button,
             {
-              alignItems: 'center',
-              width: 300,
               backgroundColor: pressed ? pressedButtonColor: button3Color,
-              borderRadius: 13,
-              padding: 12,
-              marginBottom: 10
             }
           ]} onPress={() => checkAnswer(jsonAnswers[counter][2], 3)}>
             <Text>{formatSelection(jsonAnswers[counter][2])}</Text>
@@ -234,13 +222,9 @@ export default function Index() {
           {/* ------------------------------------------------------ */}
           {/* choice 4 */}
           <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
+            styles.button,
             {
-              alignItems: 'center',
-              width: 300,
               backgroundColor: pressed ? pressedButtonColor: button4Color,
-              borderRadius: 13,
-              padding: 12,
-              marginBottom: 10
             }
           ]} onPress={() => checkAnswer(jsonAnswers[counter][3], 4)}>
             <Text>{formatSelection(jsonAnswers[counter][3])}</Text>
@@ -249,13 +233,9 @@ export default function Index() {
           {/* ------------------------------------------------------ */}
           {/* choice 5 */}
           <Pressable disabled={choiceButtonDisabled} style={({pressed}) => [
+            styles.button,
             {
-              alignItems: 'center',
-              width: 300,
               backgroundColor: pressed ? pressedButtonColor: button5Color,
-              borderRadius: 13,
-              padding: 12,
-              marginBottom: 10
             }
           ]} onPress={() => checkAnswer(jsonAnswers[counter][4], 5)}>
             <Text>{formatSelection(jsonAnswers[counter][4])}</Text>
@@ -282,4 +262,13 @@ const styles = StyleSheet.create({
     color: 'white',
     borderColor: 'white',
   },
+  button: {
+    // alignItems: 'center',
+    borderRadius: 13,
+    width: 300,
+    borderWidth: 1,
+    borderColor: 'black',
+    padding: 12,
+    marginBottom: 10,
+  }
 });
